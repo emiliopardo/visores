@@ -3,6 +3,9 @@
 namespace App\Controller\Admin;
 
 use App\Entity\MapeaCore;
+// use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class MapeaCoreCrudController extends AbstractCrudController
@@ -12,14 +15,25 @@ class MapeaCoreCrudController extends AbstractCrudController
         return MapeaCore::class;
     }
 
-    /*
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            // the labels used to refer to this entity in titles, buttons, etc.
+            ->setEntityLabelInSingular('Mapea Core')
+            ->setEntityLabelInPlural('Mapea Cores')
+            // the Symfony Security permission needed to manage the entity
+            // (none by default, so you can manage all instances of the entity)
+            // ->setEntityPermission('ROLE_EDITOR')
+        ;
+    }    
+  
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            // IdField::new('id'),
+            UrlField::new('javascript')->setHelp('Url del fichero javascript'),
+            UrlField::new('styles')->setHelp('Url del fichero estilos'),
+            UrlField::new('configuration')->setHelp('Url del fichero de configuración'),
         ];
-    }
-    */
+    } 
 }

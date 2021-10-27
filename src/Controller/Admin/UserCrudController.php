@@ -3,9 +3,11 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
+use App\Entity\Roles;
+
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
@@ -37,7 +39,15 @@ class UserCrudController extends AbstractCrudController implements EventSubscrib
             TextField::new('username'),
             EmailField::new('email'),
             TextField::new('password')->setFormType(PasswordType::class),
-            ArrayField::new('roles'),
+            //ArrayField::new('roles')->hideWhenCreating()->hideWhenUpdating(),
+            ChoiceField::new('roles', 'Roles')
+                    ->allowMultipleChoices()
+                    ->autocomplete()
+                    ->setChoices([  'User' => 'ROLE_USER',
+                                    'Editor' => 'ROLE_EDITOR',
+                                    'Admin' => 'ROLE_ADMIN',
+                                    'SuperAdmin' => 'ROLE_SUPER_ADMIN']
+                                )
         ];
     }
 

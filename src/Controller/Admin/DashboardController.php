@@ -10,6 +10,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 use App\Entity\User;
 use App\Entity\MapeaCore;
+use App\Entity\MapeaControl;
+use App\Entity\MapeaControlConfig;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -32,6 +34,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
         yield MenuItem::linkToCrud('Mapea Core', 'fas fa-globe', MapeaCore::class);
+        yield MenuItem::linkToCrud('Mapea Control', 'fas fa-globe', MapeaControl::class);
+        yield MenuItem::linkToCrud('Mapea Control Config', 'fas fa-globe', MapeaControlConfig::class);
         yield MenuItem::linkToCrud('Usuarios', 'fas fa-globe', User::class);
     }
 }

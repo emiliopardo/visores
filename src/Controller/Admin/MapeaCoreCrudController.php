@@ -32,7 +32,7 @@ class MapeaCoreCrudController extends AbstractCrudController
         return [
             // IdField::new('id'),
             UrlField::new('javascript')->setHelp('Url del fichero javascript'),
-            UrlField::new('styles')->setHelp('Url del fichero estilos'),
+            UrlField::new('styles')->setHelp('Url del fichero de estilos'),
             UrlField::new('configuration')->setHelp('Url del fichero de configuración'),
         ];
     } 

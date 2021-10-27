@@ -12,6 +12,7 @@ use App\Entity\User;
 use App\Entity\MapeaCore;
 use App\Entity\MapeaControl;
 use App\Entity\MapeaControlConfig;
+use App\Entity\MapeaPlugin;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -36,6 +37,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Mapea Core', 'fas fa-globe', MapeaCore::class);
         yield MenuItem::linkToCrud('Mapea Control', 'fas fa-globe', MapeaControl::class);
         yield MenuItem::linkToCrud('Mapea Control Config', 'fas fa-globe', MapeaControlConfig::class);
+        yield MenuItem::linkToCrud('Mapea Plugin', 'fas fa-globe', MapeaPlugin::class);
         yield MenuItem::linkToCrud('Usuarios', 'fas fa-globe', User::class);
     }
 }

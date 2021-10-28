@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MapeaPluginRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -31,6 +33,16 @@ class MapeaPlugin
      * @ORM\Column(type="string", length=255)
      */
     private $styles;
+
+    /**
+     * @ORM\OneToMany(targetEntity=MapeaPluginConfig::class, mappedBy="mapeaPlugin")
+     */
+    private $mapeaPluginConfigs;
+
+    public function __construct()
+    {
+        $this->mapeaPluginConfigs = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -69,6 +81,36 @@ class MapeaPlugin
     public function setStyles(string $styles): self
     {
         $this->styles = $styles;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|MapeaPluginConfig[]
+     */
+    public function getMapeaPluginConfigs(): Collection
+    {
+        return $this->mapeaPluginConfigs;
+    }
+
+    public function addMapeaPluginConfig(MapeaPluginConfig $mapeaPluginConfig): self
+    {
+        if (!$this->mapeaPluginConfigs->contains($mapeaPluginConfig)) {
+            $this->mapeaPluginConfigs[] = $mapeaPluginConfig;
+            $mapeaPluginConfig->setMapeaPlugin($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMapeaPluginConfig(MapeaPluginConfig $mapeaPluginConfig): self
+    {
+        if ($this->mapeaPluginConfigs->removeElement($mapeaPluginConfig)) {
+            // set the owning side to null (unless already changed)
+            if ($mapeaPluginConfig->getMapeaPlugin() === $this) {
+                $mapeaPluginConfig->setMapeaPlugin(null);
+            }
+        }
 
         return $this;
     }

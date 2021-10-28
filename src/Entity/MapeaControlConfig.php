@@ -79,10 +79,6 @@ class MapeaControlConfig
         return $this;
     }
 
-    public function __toString() {
-        return $this -> getDescription();
-    }
-
     public function getName(): ?string
     {
         return $this->name;
@@ -94,4 +90,9 @@ class MapeaControlConfig
 
         return $this;
     }
+
+    public function __toString() {
+        return $this -> getName();
+    }
+
 }

@@ -23,15 +23,20 @@ class MapeaPluginConfig
     private $description;
 
     /**
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="object")
      */
-    private $config = [];
+    private $config;
 
     /**
      * @ORM\ManyToOne(targetEntity=MapeaPlugin::class, inversedBy="mapeaPluginConfigs")
      * @ORM\JoinColumn(nullable=false)
      */
     private $mapeaPlugin;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $name;
 
     public function getId(): ?int
     {
@@ -50,12 +55,12 @@ class MapeaPluginConfig
         return $this;
     }
 
-    public function getConfig(): ?array
+    public function getConfig()
     {
         return $this->config;
     }
 
-    public function setConfig(array $config): self
+    public function setConfig($config): self
     {
         $this->config = $config;
 
@@ -74,7 +79,15 @@ class MapeaPluginConfig
         return $this;
     }
 
-    public function __toString() {
-        return $this -> getDescription();
-    }    
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
 }

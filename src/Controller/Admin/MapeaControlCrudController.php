@@ -3,11 +3,9 @@
 namespace App\Controller\Admin;
 
 use App\Entity\MapeaControl;
-use App\Entity\MapeaControlConfigs;
+use App\Entity\MapeaControlConfig;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-// use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
-//use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CodeEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;

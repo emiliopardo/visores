@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\LegendRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -59,6 +61,16 @@ class Legend
      * @var \DateTimeInterface|null
      */
     private $updatedAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity=MapeaLayerWMS::class, mappedBy="layerLegendImage")
+     */
+    private $mapeaLayerWMS;
+
+    public function __construct()
+    {
+        $this->mapeaLayerWMS = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -132,5 +144,35 @@ class Legend
     public function getImageSize(): ?int
     {
         return $this->imageSize;
+    }
+
+    /**
+     * @return Collection|MapeaLayerWMS[]
+     */
+    public function getMapeaLayerWMS(): Collection
+    {
+        return $this->mapeaLayerWMS;
+    }
+
+    public function addMapeaLayerWM(MapeaLayerWMS $mapeaLayerWM): self
+    {
+        if (!$this->mapeaLayerWMS->contains($mapeaLayerWM)) {
+            $this->mapeaLayerWMS[] = $mapeaLayerWM;
+            $mapeaLayerWM->setLayerLegendImage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMapeaLayerWM(MapeaLayerWMS $mapeaLayerWM): self
+    {
+        if ($this->mapeaLayerWMS->removeElement($mapeaLayerWM)) {
+            // set the owning side to null (unless already changed)
+            if ($mapeaLayerWM->getLayerLegendImage() === $this) {
+                $mapeaLayerWM->setLayerLegendImage(null);
+            }
+        }
+
+        return $this;
     }    
 }

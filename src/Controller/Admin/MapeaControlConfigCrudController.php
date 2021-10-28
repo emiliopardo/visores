@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\MapeaControl;
 use App\Entity\MapeaControlConfig;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;

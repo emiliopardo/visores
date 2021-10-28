@@ -34,6 +34,7 @@ class MapeaPluginConfigCrudController extends AbstractCrudController
         return [
             //IdField::new('id'),
             AssociationField::new('mapeaPlugin')->setHelp('Mapea Plugin asociado'),   
+            TextField::new('name')->setHelp('nombre de la configuración'),
             TextField::new('description')->setHelp('Descripción de la configuración'),
             CodeEditorField::new('config')->setLanguage('js')->setHelp('Parámetros de configuración')
         ];

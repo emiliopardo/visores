@@ -39,6 +39,11 @@ class MapeaPlugin
      */
     private $mapeaPluginConfigs;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $constructor;
+
     public function __construct()
     {
         $this->mapeaPluginConfigs = new ArrayCollection();
@@ -117,5 +122,17 @@ class MapeaPlugin
 
     public function __toString() {
         return $this -> getName();
+    }
+
+    public function getConstructor(): ?string
+    {
+        return $this->constructor;
+    }
+
+    public function setConstructor(?string $constructor): self
+    {
+        $this->constructor = $constructor;
+
+        return $this;
     }
 }

@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 // use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CodeEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
@@ -36,6 +37,7 @@ class MapeaPluginCrudController extends AbstractCrudController
         return [
             //IdField::new('id'),
             TextField::new('name')->setHelp('Nombre del plugin'),
+            CodeEditorField::new('constructor')->setLanguage('js')->setHelp('Constructor del Plugin'),
             UrlField::new('javascript')->setHelp('Url del fichero javascript'),
             UrlField::new('styles')->setHelp('Url del fichero de estilos'),
             AssociationField::new('mapeaPluginConfigs')->setFormTypeOptions([

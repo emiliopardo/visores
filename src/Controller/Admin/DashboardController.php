@@ -14,6 +14,7 @@ use App\Entity\MapeaControl;
 use App\Entity\MapeaControlConfig;
 use App\Entity\MapeaPlugin;
 use App\Entity\MapeaPluginConfig;
+use App\Entity\Legend;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -50,6 +51,9 @@ class DashboardController extends AbstractDashboardController
             MenuItem::subMenu('Plugins', 'fa fa-article')->setSubItems([
                 MenuItem::linkToCrud('Mapea Plugin', 'fas fa-globe', MapeaPlugin::class),
                 MenuItem::linkToCrud('Mapea Plugin Config', 'fas fa-globe', MapeaPluginConfig::class)
+            ]),
+            MenuItem::subMenu('Imagenes', 'fa fa-article')->setSubItems([
+                MenuItem::linkToCrud('legend', 'fas fa-paint', Legend::class)
             ]),
             MenuItem::subMenu('Usuarios', 'fa fa-article')->setSubItems([
                 MenuItem::linkToCrud('Usuarios', 'fas fa-user', User::class)

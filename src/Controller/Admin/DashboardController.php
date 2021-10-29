@@ -15,6 +15,7 @@ use App\Entity\MapeaControlConfig;
 use App\Entity\MapeaPlugin;
 use App\Entity\MapeaPluginConfig;
 use App\Entity\MapeaLayerWMS;
+use App\Entity\MapeaLayerGeojson;
 use App\Entity\Legend;
 use App\Entity\Icon;
 
@@ -55,7 +56,8 @@ class DashboardController extends AbstractDashboardController
                 MenuItem::linkToCrud('Mapea Plugin Config', 'fas fa-globe', MapeaPluginConfig::class)
             ]),
             MenuItem::subMenu('Layers', 'fa fa-article')->setSubItems([
-                MenuItem::linkToCrud('Mapea Layer WMS', 'fas fa-globe', MapeaLayerWMS::class),
+                MenuItem::linkToCrud('Layer WMS', 'fas fa-globe', MapeaLayerWMS::class),
+                MenuItem::linkToCrud('Layer Geojson', 'fas fa-globe', MapeaLayerGeojson::class),
                 //MenuItem::linkToCrud('Mapea Plugin Config', 'fas fa-globe', MapeaPluginConfig::class)
             ]),
             MenuItem::subMenu('Imagenes', 'fa fa-article')->setSubItems([

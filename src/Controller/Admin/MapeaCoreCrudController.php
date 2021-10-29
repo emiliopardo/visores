@@ -7,6 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class MapeaCoreCrudController extends AbstractCrudController
@@ -40,6 +41,8 @@ class MapeaCoreCrudController extends AbstractCrudController
     {
         return [
             // IdField::new('id'),
+            TextField::new('name')->setHelp('Nombre corto'),
+            TextField::new('description')->setHelp('Descripción'),
             UrlField::new('javascript')->setHelp('Url del fichero javascript'),
             UrlField::new('styles')->setHelp('Url del fichero de estilos'),
             UrlField::new('configuration')->setHelp('Url del fichero de configuración'),

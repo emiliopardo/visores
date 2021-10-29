@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CodeEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -45,10 +46,11 @@ class MapeaControlCrudController extends AbstractCrudController
             //IdField::new('id'),
             TextField::new('name'),
             CodeEditorField::new('constructor')->setLanguage('js')->setHelp('Constructor del Control'),
+            BooleanField::new('needConfig')->setHelp('Control con configuración'),
             AssociationField::new('mapeaControlConfigs')->setFormTypeOptions([
                 'by_reference' => true,
                 'multiple' => true,
-            ])
+            ])->hideOnIndex(),
         ];
     }
 

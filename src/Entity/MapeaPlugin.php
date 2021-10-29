@@ -40,9 +40,14 @@ class MapeaPlugin
     private $mapeaPluginConfigs;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $constructor;
+
+    /**
+     * @ORM\Column(type="boolean", options={"default":0})
+     */
+    private $needConfig;
 
     public function __construct()
     {
@@ -132,6 +137,18 @@ class MapeaPlugin
     public function setConstructor(?string $constructor): self
     {
         $this->constructor = $constructor;
+
+        return $this;
+    }
+
+    public function getNeedConfig(): ?bool
+    {
+        return $this->needConfig;
+    }
+
+    public function setNeedConfig(?bool $needConfig): self
+    {
+        $this->needConfig = $needConfig;
 
         return $this;
     }

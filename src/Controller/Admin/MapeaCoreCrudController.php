@@ -43,9 +43,9 @@ class MapeaCoreCrudController extends AbstractCrudController
             // IdField::new('id'),
             TextField::new('name')->setHelp('Nombre corto'),
             TextField::new('description')->setHelp('Descripción'),
-            UrlField::new('javascript')->setHelp('Url del fichero javascript'),
-            UrlField::new('styles')->setHelp('Url del fichero de estilos'),
-            UrlField::new('configuration')->setHelp('Url del fichero de configuración'),
+            UrlField::new('javascript')->setHelp('Url del fichero javascript')->hideOnIndex(),
+            UrlField::new('styles')->setHelp('Url del fichero de estilos')->hideOnIndex(),
+            UrlField::new('configuration')->setHelp('Url del fichero de configuración')->hideOnIndex(),
         ];
     } 
 }

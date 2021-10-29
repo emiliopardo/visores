@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CodeEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -47,12 +48,13 @@ class MapeaPluginCrudController extends AbstractCrudController
             //IdField::new('id'),
             TextField::new('name')->setHelp('Nombre del plugin'),
             CodeEditorField::new('constructor')->setLanguage('js')->setHelp('Constructor del Plugin'),
-            UrlField::new('javascript')->setHelp('Url del fichero javascript'),
-            UrlField::new('styles')->setHelp('Url del fichero de estilos'),
+            UrlField::new('javascript')->setHelp('Url del fichero javascript')->hideOnIndex(),
+            UrlField::new('styles')->setHelp('Url del fichero de estilos')->hideOnIndex(),
+            BooleanField::new('needConfig')->setHelp('Plugin con confguración'),
             AssociationField::new('mapeaPluginConfigs')->setFormTypeOptions([
                 'by_reference' => true,
                 'multiple' => true,
-            ])
+            ])->hideOnIndex(),
         ];
     }
     

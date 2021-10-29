@@ -34,6 +34,11 @@ class MapeaControl
      */
     private $mapeaControlConfigs;
 
+    /**
+     * @ORM\Column(type="boolean", options={"default":0})
+     */
+    private $needConfig;
+
     public function __construct()
     {
         $this->mapeaControlConfigs = new ArrayCollection();
@@ -100,5 +105,17 @@ class MapeaControl
 
     public function __toString() {
         return $this -> getName();
+    }
+
+    public function getNeedConfig(): ?bool
+    {
+        return $this->needConfig;
+    }
+
+    public function setNeedConfig(?bool $needConfig): self
+    {
+        $this->needConfig = $needConfig;
+
+        return $this;
     }
 }

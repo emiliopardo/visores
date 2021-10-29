@@ -40,19 +40,19 @@ class DashboardController extends AbstractDashboardController
         return [
             MenuItem::linkToDashboard('Home', 'fa fa-home'),
             MenuItem::subMenu('Mapea', 'fa fa-globe')->setSubItems([
-            MenuItem::linkToCrud('Mapea Core', 'fas fa-cog', MapeaCore::class)
+            MenuItem::linkToCrud('Cores', 'fas fa-cog', MapeaCore::class)
             ]),
             MenuItem::subMenu('Controles', 'fas fa-solar-panel')->setSubItems([
-                MenuItem::linkToCrud('Mapea Control', 'fas fa-tv', MapeaControl::class),
-                MenuItem::linkToCrud('Mapea Control Config', 'fas fa-cogs', MapeaControlConfig::class)
+                MenuItem::linkToCrud('Controles', 'fas fa-tv', MapeaControl::class),
+                MenuItem::linkToCrud('Configuraciones', 'fas fa-cogs', MapeaControlConfig::class)
             ]),
             MenuItem::subMenu('Plugins', 'fas fa-object-group')->setSubItems([
-                MenuItem::linkToCrud('Mapea Plugin', 'fas fa-object-ungroup', MapeaPlugin::class),
-                MenuItem::linkToCrud('Mapea Plugin Config', 'fas fa-cogs', MapeaPluginConfig::class)
+                MenuItem::linkToCrud('Plugins', 'fas fa-object-ungroup', MapeaPlugin::class),
+                MenuItem::linkToCrud('Configuraciones', 'fas fa-cogs', MapeaPluginConfig::class)
             ]),
             MenuItem::subMenu('Layers', 'fas fa-layer-group')->setSubItems([
-                MenuItem::linkToCrud('Layer WMS', 'fas fa-th', MapeaLayerWMS::class),
-                MenuItem::linkToCrud('Layer Geojson', 'fas fa-vector-square', MapeaLayerGeojson::class),
+                MenuItem::linkToCrud('WMS', 'fas fa-th', MapeaLayerWMS::class),
+                MenuItem::linkToCrud('Geojson', 'fas fa-vector-square', MapeaLayerGeojson::class),
             ]),
             MenuItem::subMenu('Imagenes', 'fas fa-images')->setSubItems([
                 MenuItem::linkToCrud('Leyendas', 'fas fa-image', Legend::class),

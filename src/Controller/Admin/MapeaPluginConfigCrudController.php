@@ -4,6 +4,8 @@ namespace App\Controller\Admin;
 
 use App\Entity\MapeaPlugin;
 use App\Entity\MapeaPluginConfig;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CodeEditorField;
@@ -17,12 +19,20 @@ class MapeaPluginConfigCrudController extends AbstractCrudController
         return MapeaPluginConfig::class;
     }
 
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            ->add(Crud::PAGE_INDEX, Action::DETAIL)
+        ;
+    }
+
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
             // the labels used to refer to this entity in titles, buttons, etc.
             ->setEntityLabelInSingular('Configuración Mapea Plugin')
             ->setEntityLabelInPlural('Configuraciones Mapea Plugin')
+            ->showEntityActionsAsDropdown(false)
             // the Symfony Security permission needed to manage the entity
             // (none by default, so you can manage all instances of the entity)
             // ->setEntityPermission('ROLE_EDITOR')

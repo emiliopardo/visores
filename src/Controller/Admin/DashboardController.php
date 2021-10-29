@@ -32,17 +32,11 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Visores');
+            ->setTitle('Visores')->renderContentMaximized();//->renderSidebarMinimized();
     }
 
     public function configureMenuItems(): iterable
     {
-        // yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
-        // yield MenuItem::linkToCrud('Mapea Core', 'fas fa-globe', MapeaCore::class);
-        // yield MenuItem::linkToCrud('Mapea Control', 'fas fa-globe', MapeaControl::class);
-        // yield MenuItem::linkToCrud('Mapea Control Config', 'fas fa-globe', MapeaControlConfig::class);
-        // yield MenuItem::linkToCrud('Mapea Plugin', 'fas fa-globe', MapeaPlugin::class);
-        // yield MenuItem::linkToCrud('Usuarios', 'fas fa-globe', User::class);
         return [
             MenuItem::linkToDashboard('Home', 'fa fa-home'),
             MenuItem::subMenu('Mapea', 'fa fa-globe')->setSubItems([
@@ -59,7 +53,6 @@ class DashboardController extends AbstractDashboardController
             MenuItem::subMenu('Layers', 'fas fa-layer-group')->setSubItems([
                 MenuItem::linkToCrud('Layer WMS', 'fas fa-th', MapeaLayerWMS::class),
                 MenuItem::linkToCrud('Layer Geojson', 'fas fa-vector-square', MapeaLayerGeojson::class),
-                //MenuItem::linkToCrud('Mapea Plugin Config', 'fas fa-globe', MapeaPluginConfig::class)
             ]),
             MenuItem::subMenu('Imagenes', 'fas fa-images')->setSubItems([
                 MenuItem::linkToCrud('Leyendas', 'fas fa-image', Legend::class),

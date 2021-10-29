@@ -47,7 +47,7 @@ class MapeaPluginCrudController extends AbstractCrudController
         return [
             //IdField::new('id'),
             TextField::new('name')->setHelp('Nombre del plugin'),
-            CodeEditorField::new('constructor')->setLanguage('js')->setHelp('Constructor del Plugin'),
+            CodeEditorField::new('constructor')->setLanguage('js')->setHelp('Constructor del Plugin')->hideOnIndex(),
             UrlField::new('javascript')->setHelp('Url del fichero javascript')->hideOnIndex(),
             UrlField::new('styles')->setHelp('Url del fichero de estilos')->hideOnIndex(),
             BooleanField::new('needConfig')->setHelp('Plugin con confguración'),

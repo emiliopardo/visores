@@ -32,7 +32,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Visores')->renderContentMaximized();//->renderSidebarMinimized();
+            ->setTitle('Visores');//->renderContentMaximized();//->renderSidebarMinimized();
     }
 
     public function configureMenuItems(): iterable

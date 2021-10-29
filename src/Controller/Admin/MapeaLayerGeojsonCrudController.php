@@ -45,10 +45,10 @@ class MapeaLayerGeojsonCrudController extends AbstractCrudController
             //IdField::new('id'),
             TextField::new('name')->setHelp('nombre descriptivo'),
             TextField::new('description')->setHelp('Descripción del layer'),
-            TextField::new('layerName')->setHelp('nombre del layer'),
-            UrlField::new('layerUrl')->setHelp('Url del layer'),
-            BooleanField::new('extract')->setHelp('Información'),
-            CodeEditorField::new('layerStyle')->setLanguage('js')->setHelp('Estilo del Geojson')
+            TextField::new('layerName')->setHelp('nombre del layer')->hideOnIndex(),
+            UrlField::new('layerUrl')->setHelp('Url del layer')->hideOnIndex(),
+            BooleanField::new('extract')->setHelp('Información')->hideOnIndex(),
+            CodeEditorField::new('layerStyle')->setLanguage('js')->setHelp('Estilo del Geojson')->hideOnIndex(),
         ];
     }
 }

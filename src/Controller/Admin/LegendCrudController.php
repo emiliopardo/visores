@@ -47,7 +47,7 @@ class LegendCrudController extends AbstractCrudController
         return [
             //IdField::new('id'),
             TextField::new('name'),
-            TextField::new('imageName')->hideOnForm(),
+            TextField::new('imageName')->hideOnIndex()->hideOnForm(),
             TextField::new('description'),
             TextField::new('imageFile')->setFormType(VichFileType::class, [
                 'delete_label' => 'delete?'

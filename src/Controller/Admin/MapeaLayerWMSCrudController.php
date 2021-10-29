@@ -45,19 +45,19 @@ class MapeaLayerWMSCrudController extends AbstractCrudController
         return [
             TextField::new('name'),
             TextField::new('description'),
-            TextField::new('layerName'),
-            TextField::new('layerLegend'),
-            UrlField::new('layerUrl'),
-            BooleanField::new('layerTransparent'),
-            BooleanField::new('layerTiled'),
+            TextField::new('layerName')->hideOnIndex(),
+            TextField::new('layerLegend')->hideOnIndex(),
+            UrlField::new('layerUrl')->hideOnIndex(),
+            BooleanField::new('layerTransparent')->hideOnIndex(),
+            BooleanField::new('layerTiled')->hideOnIndex(),
             TextField::new('layerStyle')->setFormTypeOptions([
                 //'required'=> false,
                 'data'=>'default',
-            ]),
+            ])->hideOnIndex(),
             AssociationField::new('layerLegendImage')->setFormTypeOptions([
                 'by_reference' => true,
                 'multiple' => false,
-            ])
+            ])->hideOnIndex(),
         ];
     }
 }

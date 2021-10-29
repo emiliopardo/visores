@@ -47,7 +47,7 @@ class MapeaControlConfigCrudController extends AbstractCrudController
             AssociationField::new('mapeaControl')->setHelp('Mapea Control asociado'),   
             TextField::new('name')->setHelp('nombre de la configuración')->hideOnIndex(),
             TextField::new('description')->setHelp('Descripción de la configuración'),
-            CodeEditorField::new('config')->setLanguage('js')->setHelp('Parámetros de configuración')
+            CodeEditorField::new('config')->setLanguage('js')->setHelp('Parámetros de configuración')->hideOnIndex(),
         ];
     }
 

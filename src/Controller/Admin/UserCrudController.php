@@ -7,6 +7,7 @@ use App\Entity\Roles;
 
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
@@ -40,13 +41,26 @@ class UserCrudController extends AbstractCrudController implements EventSubscrib
         ;
     }
 
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            // the labels used to refer to this entity in titles, buttons, etc.
+            ->setEntityLabelInSingular('Usuario')
+            ->setEntityLabelInPlural('Usuarios')
+            ->showEntityActionsAsDropdown(false)
+            // the Symfony Security permission needed to manage the entity
+            // (none by default, so you can manage all instances of the entity)
+            // ->setEntityPermission('ROLE_EDITOR')
+        ;
+    }     
+
     public function configureFields(string $pageName): iterable
     {
         return [
             // IdField::new('id'),
             TextField::new('username'),
             EmailField::new('email'),
-            TextField::new('password')->setFormType(PasswordType::class),
+            TextField::new('password')->setFormType(PasswordType::class)->hideOnIndex(),
             //ArrayField::new('roles')->hideWhenCreating()->hideWhenUpdating(),
             ChoiceField::new('roles', 'Roles')
                     ->allowMultipleChoices()
@@ -55,7 +69,7 @@ class UserCrudController extends AbstractCrudController implements EventSubscrib
                                     'Editor' => 'ROLE_EDITOR',
                                     'Admin' => 'ROLE_ADMIN',
                                     'SuperAdmin' => 'ROLE_SUPER_ADMIN']
-                                )
+                                )->hideOnIndex()
         ];
     }
 

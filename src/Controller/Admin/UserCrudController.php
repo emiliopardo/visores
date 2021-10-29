@@ -38,6 +38,10 @@ class UserCrudController extends AbstractCrudController implements EventSubscrib
     {
         return $actions
             ->add(Crud::PAGE_INDEX, Action::DETAIL)
+            ->setPermission(Action::DELETE, 'ROLE_SUPER_ADMIN')
+            ->setPermission(Action::EDIT, 'ROLE_SUPER_ADMIN')
+            ->setPermission(Action::NEW, 'ROLE_SUPER_ADMIN')
+            ->setPermission(Action::DETAIL, 'ROLE_SUPER_ADMIN')
         ;
     }
 
@@ -58,10 +62,11 @@ class UserCrudController extends AbstractCrudController implements EventSubscrib
     {
         return [
             // IdField::new('id'),
-            TextField::new('username'),
-            EmailField::new('email'),
+            TextField::new('username')->hideOnIndex(),
+            TextField::new('name'),
+            TextField::new('surname'),
+            EmailField::new('email')->hideOnIndex(),
             TextField::new('password')->setFormType(PasswordType::class)->hideOnIndex(),
-            //ArrayField::new('roles')->hideWhenCreating()->hideWhenUpdating(),
             ChoiceField::new('roles', 'Roles')
                     ->allowMultipleChoices()
                     ->autocomplete()
@@ -69,7 +74,7 @@ class UserCrudController extends AbstractCrudController implements EventSubscrib
                                     'Editor' => 'ROLE_EDITOR',
                                     'Admin' => 'ROLE_ADMIN',
                                     'SuperAdmin' => 'ROLE_SUPER_ADMIN']
-                                )->hideOnIndex()
+                                )->hideOnIndex()->setPermission('ROLE_SUPER_ADMIN'),
         ];
     }
 
